@@ -62,6 +62,7 @@ public class LoginTest {
 
         //Quit=inchide instanta cu toate taburile deschise
         //Close=inchide tabul curent
+        //Select - este un dropdown
 
 
     }
