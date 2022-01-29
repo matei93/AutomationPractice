@@ -1,5 +1,6 @@
 package Tests;
 
+import Base.ShareData;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -10,29 +11,30 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
-public class RegisterTest {
+public class RegisterTest extends ShareData {
+    //Mostenire
 
-    public WebDriver driver;
 
     @Test
 
     public void register() {
-        //Setam dirver-ul de Chrome
 
-        System.setProperty("webdriver.chrome.driver","C:\\Automation\\chromedriver.exe");
 
-        //Deschidem o instanta de chrome
 
-        driver=new ChromeDriver();
 
-        //Accesam un URL
+        WebElement signInE = driver.findElement(By.id("btn1"));
+        signInE.click();
 
-        driver.get("http://demo.automationtesting.in/Index.html");
-        driver.manage().window().maximize();
+        WebElement emailE = driver.findElement(By.cssSelector("input[placeholder='E mail']"));
+        String emailValue = "matei.florin@outlook.com";
+        emailE.sendKeys(emailValue);
 
-        WebElement skipSignInElement = driver.findElement(By.id("btn2"));
-        skipSignInElement.click();
+        WebElement passwordE = driver.findElement(By.cssSelector("input[placeholder='Password']"));
+        String passwordValue = "Frankie93";
+        passwordE.sendKeys(passwordValue);
 
+        WebElement enterE = driver.findElement(By.id("enterbtn"));
+        enterE.click();
 
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
