@@ -28,13 +28,17 @@ public class RegisterTest {
         //Accesam un URL
 
         driver.get("http://demo.automationtesting.in/Index.html");
+
+        //Maximize window
         driver.manage().window().maximize();
+
+        //Skipsignin clik
 
         WebElement skipSignInElement = driver.findElement(By.id("btn2"));
         skipSignInElement.click();
 
 
-
+        //Scroll
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,600)");
         WebElement languagesElement = driver.findElement(By.cssSelector("div[id='msdd']"));
@@ -47,9 +51,12 @@ public class RegisterTest {
 
         }
 
+        //Phone clik
+
         WebElement phoneElement = driver.findElement(By.cssSelector("input[type='tel']"));
         phoneElement.click();
 
+        //Year select
         WebElement yearElement = driver.findElement(By.id("yearbox"));
         Select yearSelect = new Select(yearElement);
         yearSelect.selectByValue("1993");
