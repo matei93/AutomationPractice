@@ -39,6 +39,7 @@ public class WindowTest extends ShareData {
         List<String> tabs = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(tabs.get(1));
         System.out.println("Titlul paginii "+ driver.getTitle());
+
         driver.close();
         driver.switchTo().window(tabs.get(0));
         System.out.println("Titlul paginii "+ driver.getTitle());
@@ -52,7 +53,7 @@ public class WindowTest extends ShareData {
         newWindow.click();
 
         System.out.println("Titlul paginii "+ driver.getTitle());
-        List<String> tabs = new ArrayList<>(driver.getWindowHandles());
+        List<String> windows = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(tabs.get(1));
         System.out.println("Titlul paginii "+ driver.getTitle());
 
@@ -62,6 +63,23 @@ public class WindowTest extends ShareData {
 
         //mai ai de facut inca un test, trebuie sa vezi cat de corect ai facut !!!
         //mai trebuie sa faci un branch
+
+        windowOptions.get(2).click();
+        WebElement newWindowAndTab = driver.findElement(By.cssSelector("#Multiple>button"));
+        newWindowAndTab.click();
+
+        System.out.println("Titlul paginii: "+driver.getTitle());
+        List<String> multipleTabs = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(multipleTabs.get(2));
+        System.out.println("Titlul ferestrei 2: "+driver.getTitle());
+
+        driver.close();
+        driver.switchTo().window(multipleTabs.get(1));
+        System.out.println("Titlul paginii: "+driver.getTitle());
+
+        driver.close();
+        driver.switchTo().window(multipleTabs.get(0));
+        System.out.println("Titlul paginii: "+driver.getTitle());
 
 
 
