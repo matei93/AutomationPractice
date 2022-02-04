@@ -58,7 +58,7 @@ public class RegisterTest {
 
         //Year select
         WebElement yearElement = driver.findElement(By.id("yearbox"));
-        Select yearSelect = new Select(yearElement);
+        Select yearSelect = new Select(yearElement);git statu
         yearSelect.selectByValue("1993");
         yearElement.click();
 
