@@ -59,4 +59,3 @@ public class RegisterTest extends ShareData {
 
     }
 }
-
