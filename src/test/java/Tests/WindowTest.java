@@ -10,7 +10,7 @@ import org.openqa.selenium.interactions.Actions;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WindowTest extends ShareData {
+public class gWindowTest extends ShareData {
 
     @Test
 
