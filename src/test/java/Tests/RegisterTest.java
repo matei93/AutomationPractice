@@ -1,6 +1,7 @@
 package Tests;
 
 import Base.ShareData;
+import Help.ElementMethods;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -14,17 +15,20 @@ import java.util.List;
 public class RegisterTest extends ShareData {
     //Mostenire
 
+    public ElementMethods elementMethods;
+
 
     @Test
 
+    //Trebuie sa recuperezi !!!
+
     public void register() {
 
-
+        elementMethods = new ElementMethods(driver);
 
 
         WebElement signInE = driver.findElement(By.id("btn1"));
         signInE.click();
-
         WebElement emailE = driver.findElement(By.cssSelector("input[placeholder='E mail']"));
         String emailValue = "matei.florin@outlook.com";
         emailE.sendKeys(emailValue);
@@ -32,7 +36,6 @@ public class RegisterTest extends ShareData {
         WebElement passwordE = driver.findElement(By.cssSelector("input[placeholder='Password']"));
         String passwordValue = "Frankie93";
         passwordE.sendKeys(passwordValue);
-
         WebElement enterE = driver.findElement(By.id("enterbtn"));
         enterE.click();
 
@@ -51,7 +54,6 @@ public class RegisterTest extends ShareData {
 
         WebElement phoneElement = driver.findElement(By.cssSelector("input[type='tel']"));
         phoneElement.click();
-
         WebElement yearElement = driver.findElement(By.id("yearbox"));
         Select yearSelect = new Select(yearElement);
         yearSelect.selectByValue("1993");

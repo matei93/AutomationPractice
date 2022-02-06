@@ -1,6 +1,7 @@
 package Tests;
 
 import Base.ShareData;
+import Help.ElementMethods;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -11,11 +12,16 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class LoginTest extends ShareData {
 
+    public ElementMethods elementMethods;
+
     // Declaram variabila WebDriver
 
     @Test
 
     public void Login(){
+
+        elementMethods=new ElementMethods(driver);
+
         //Setam dirver-ul de Chrome
         //Deschidem o instanta de chrome
         //Accesam un URL
@@ -39,9 +45,7 @@ public class LoginTest extends ShareData {
         //messageerrorE.isDisplayed();
 
         WebElement messageerrorE = driver.findElement(By.id("errormsg"));
-        String expectedMsg="Invalid User Name or PassWord";
-        String actualmsg=messageerrorE.getText();
-        Assert.assertEquals("Textul cautat nu este corect",expectedMsg,actualmsg);
+        elementMethods.validateElement(messageerrorE, "Invalid User Name or PassWord");
 
         //De sugerat de a pune un mesaj cand faci un assert.
 
