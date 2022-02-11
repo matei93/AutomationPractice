@@ -22,38 +22,33 @@ public class LoginTest extends ShareData {
 
         elementMethods=new ElementMethods(driver);
 
-        //Setam dirver-ul de Chrome
-        //Deschidem o instanta de chrome
-        //Accesam un URL
-        //Facem driver-ul in modul maximize
-
         WebElement signInE = driver.findElement(By.id("btn1"));
-        signInE.click();
+        elementMethods.clickElement(signInE);
 
         WebElement emailE = driver.findElement(By.cssSelector("input[placeholder='E mail']"));
         String emailValue = "matei.florin@outlook.com";
-        emailE.sendKeys(emailValue);
+        elementMethods.fillElement(emailValue);
 
         WebElement passwordE = driver.findElement(By.cssSelector("input[placeholder='Password']"));
         String passwordValue = "Frankie93";
-        passwordE.sendKeys(passwordValue);
+        elementMethods.fillElement(passwordValue);
 
         WebElement enterE = driver.findElement(By.id("enterbtn"));
-        enterE.click();
-
-        //WebElement messageerrorE = driver.findElement(By.id("errormsg"));
-        //messageerrorE.isDisplayed();
+        elementMethods.clickElement(enterE);
 
         WebElement messageerrorE = driver.findElement(By.id("errormsg"));
         elementMethods.validateElement(messageerrorE, "Invalid User Name or PassWord");
 
-        //De sugerat de a pune un mesaj cand faci un assert.
-
         driver.close();
 
+        //Setam dirver-ul de Chrome
+        //Deschidem o instanta de chrome
+        //Accesam un URL
+        //Facem driver-ul in modul maximize
         //Quit=inchide instanta cu toate taburile deschise
         //Close=inchide tabul curent
-        //Select - este un dropdown
+        //Select=este un dropdown
+        //De sugerat de a pune un mesaj cand faci un assert.
 
 
     }
