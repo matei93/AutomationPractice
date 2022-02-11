@@ -20,7 +20,7 @@ public class WindowTest extends ShareData {
 
         WebElement switchToElement = driver.findElement(By.xpath("//a[text()='Windows']"));
         Actions Action = new Actions(driver);
-        Action.moveToElement(switchToElement).perform();
+        Action.moveToElement(switchToElement).perform();git
 
         WebElement windowElement = driver.findElement(By.xpath("//a[text()='Alerts']"));
         windowElement.click();
