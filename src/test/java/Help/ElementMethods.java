@@ -33,9 +33,10 @@ public class ElementMethods {
     }
 
     //Fiill element
-    public void fillElement(String value){
+    public void fillElement(WebElement element, String value){
         waitElement(element);
         element.sendKeys(value);
+
     }
 
     //Hover element
@@ -63,6 +64,5 @@ public class ElementMethods {
         Select yearSelect = new Select(element);
         yearSelect.selectByValue(value);
     }
-
 
 }

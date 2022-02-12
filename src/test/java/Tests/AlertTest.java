@@ -41,15 +41,17 @@ public class AlertTest extends ShareData {
         elementMethods.clickElement(signInE);
 
         WebElement switchToElement = driver.findElement(By.xpath("//a[text()='SwitchTo']"));
-        Actions Action = new Actions(driver);
-        Action.moveToElement(switchToElement).perform();
+        elementMethods.moveElement(switchToElement);
+        //Actions Action = new Actions(driver);
+        //Action.moveToElement(switchToElement).perform();
 
         WebElement alertsElement = driver.findElement(By.xpath("//a[text()='Alerts']"));
         elementMethods.clickElement(alertsElement);
 
         //Instalarae extentie in instantele de browser!!!
 
-       pageMethods.navigateToUrl("http://demo.automationtesting.in/Alerts.html");
+
+        pageMethods.navigateToUrl("http://demo.automationtesting.in/Alerts.html");
 
         List<WebElement> alertOptions=driver.findElements(By.cssSelector(".nav-tabs>li>a"));
         alertOptions.get(0).click();
@@ -73,12 +75,12 @@ public class AlertTest extends ShareData {
 
         alertOptions.get(1).click();
         WebElement alertOKCancel = driver.findElement(By.cssSelector("#CancelTab>button"));
-        alertOKCancel.click();
+        elementMethods.clickElement(alertOKCancel);
         alertsMethods.cancelAlert();
 
         alertOptions.get(2).click();
         WebElement alertTextBox = driver.findElement(By.cssSelector("#Textbox>button"));
-        alertTextBox.click();
+        elementMethods.clickElement(alertTextBox);
         alertsMethods.acceptFillAlert("Test");
 
     }

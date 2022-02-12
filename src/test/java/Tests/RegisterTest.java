@@ -28,7 +28,7 @@ public class RegisterTest extends ShareData {
 
 
         WebElement signInE = driver.findElement(By.id("btn1"));
-        signInE.click();
+        elementMethods.clickElement(signInE);
         WebElement emailE = driver.findElement(By.cssSelector("input[placeholder='E mail']"));
         String emailValue = "matei.florin@outlook.com";
         emailE.sendKeys(emailValue);
@@ -37,13 +37,13 @@ public class RegisterTest extends ShareData {
         String passwordValue = "Frankie93";
         passwordE.sendKeys(passwordValue);
         WebElement enterE = driver.findElement(By.id("enterbtn"));
-        enterE.click();
+        elementMethods.clickElement(enterE);
 
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,600)");
-        WebElement languagesElement = driver.findElement(By.cssSelector("div[id='msdd']"));
-        languagesElement.click();
+        WebElement languagesElement = driver.findElement(By.cssSelector("div[id='mssd']"));
+        elementMethods.clickElement(languagesElement);
         List<WebElement> LanguageOptions = driver.findElements(By.cssSelector(".ui-autocomplete.ui-front>li>a"));
         for (int index = 0; index < LanguageOptions.size(); index++) {
             if (LanguageOptions.get(index).getText().equals("English")) {
@@ -53,11 +53,11 @@ public class RegisterTest extends ShareData {
         }
 
         WebElement phoneElement = driver.findElement(By.cssSelector("input[type='tel']"));
-        phoneElement.click();
+        elementMethods.clickElement(phoneElement);
         WebElement yearElement = driver.findElement(By.id("yearbox"));
-        Select yearSelect = new Select(yearElement);
-        yearSelect.selectByValue("1993");
-        yearElement.click();
+        elementMethods.selectElementByValue(yearElement, "1993");
+
+        elementMethods.clickElement(yearElement);
 
     }
 }

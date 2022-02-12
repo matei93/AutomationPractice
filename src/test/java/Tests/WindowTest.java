@@ -1,73 +1,73 @@
 package Tests;
 
 import Base.ShareData;
+import Help.ElementMethods;
+import Help.WindowMethods;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class WindowTest extends ShareData {
 
-gis
+    public ElementMethods elementMethods;
+    public WindowMethods windowMethods;
+
+
     @Test
-    public void windowTest(){
+    public void windowTest() {
+
+        elementMethods=new ElementMethods(driver);
+        windowMethods=new WindowMethods(driver);
 
         WebElement skipSignInElement = driver.findElement(By.id("btn2"));
-        skipSignInElement.click();
+        elementMethods.clickElement(skipSignInElement);
 
         WebElement switchToElement = driver.findElement(By.xpath("//a[text()='SwitchTo']"));
-        Actions Action = new Actions(driver);
-        Action.moveToElement(switchToElement).perform();
+        elementMethods.moveElement(switchToElement);
+        //Actions Action = new Actions(driver);
+        //Action.moveToElement(switchToElement).perform();
 
         WebElement windowsElement = driver.findElement(By.xpath("//a[text()='Windows']"));
-        windowsElement.click();
+        elementMethods.clickElement(windowsElement);
 
         driver.navigate().to("http://demo.automationtesting.in/Windows.html");
 
         List<WebElement> windowOptions = driver.findElements(By.cssSelector(".nav-tabs>li>a"));
         windowOptions.get(0).click();
         WebElement newTabOk = driver.findElement(By.cssSelector("#Tabbed>a>button"));
-        newTabOk.click();
+        elementMethods.clickElement(newTabOk);
 
-        System.out.println("Titlul paginii: "+driver.getTitle());
-        List<String> tabs = new ArrayList<>(driver.getWindowHandles());
-        driver.switchTo().window(tabs.get(1));
-        System.out.println("Titlul paginii 2: "+driver.getTitle());
+        windowMethods.switchToTab(1);
 
-        driver.close();
-        driver.switchTo().window(tabs.get(0));
-        System.out.println("Titlul paginii: "+driver.getTitle());
+        windowMethods.closeTab();
+
+        windowMethods.switchToTab(0);
 
         windowOptions.get(1).click();
-        WebElement newWindow = driver.findElement(By.cssSelector("#Seperate>button"));
-        newWindow.click();
+        WebElement newWindowAndTab = driver.findElement(By.cssSelector("#Seperate>button"));
+        elementMethods.clickElement(newWindowAndTab);
 
-        System.out.println("Titlul paginii: "+driver.getTitle());
-        List<String> windows = new ArrayList<>(driver.getWindowHandles());
-        driver.switchTo().window(windows.get(1));
-        System.out.println("Titlul ferestrei 2: "+driver.getTitle());
+        windowMethods.switchToTab(1);
 
-        driver.close();
-        driver.switchTo().window(windows.get(0));
-        System.out.println("Titlul paginii: "+driver.getTitle());
+        windowMethods.closeTab();
+
+        windowMethods.switchToTab(0);
 
         windowOptions.get(2).click();
-        WebElement newWindowAndTab = driver.findElement(By.cssSelector("#Multiple>button"));
-        newWindowAndTab.click();
+        WebElement newWindowAndTab2 = driver.findElement(By.cssSelector("#Multiple>button"));
+        elementMethods.clickElement(newWindowAndTab2);
 
-        System.out.println("Titlul paginii: "+driver.getTitle());
-        List<String> multipleTabs = new ArrayList<>(driver.getWindowHandles());
-        driver.switchTo().window(multipleTabs.get(2));
-        System.out.println("Titlul ferestrei 2: "+driver.getTitle());
+        windowMethods.switchToTab(2);
 
-        driver.close();
-        driver.switchTo().window(multipleTabs.get(1));
-        System.out.println("Titlul paginii: "+driver.getTitle());
+        windowMethods.closeTab();
 
-        driver.close();
-        driver.switchTo().window(multipleTabs.get(0));
-        System.out.println("Titlul paginii: "+driver.getTitle());
+        windowMethods.switchToTab(1);
+
+        windowMethods.closeTab();
+
+        windowMethods.switchToTab(0);
+    }
 }

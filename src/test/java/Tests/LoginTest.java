@@ -27,11 +27,11 @@ public class LoginTest extends ShareData {
 
         WebElement emailE = driver.findElement(By.cssSelector("input[placeholder='E mail']"));
         String emailValue = "matei.florin@outlook.com";
-        elementMethods.fillElement(emailValue);
+        elementMethods.fillElement(emailE, emailValue);
 
         WebElement passwordE = driver.findElement(By.cssSelector("input[placeholder='Password']"));
         String passwordValue = "Frankie93";
-        elementMethods.fillElement(passwordValue);
+        elementMethods.fillElement(passwordE,passwordValue);
 
         WebElement enterE = driver.findElement(By.id("enterbtn"));
         elementMethods.clickElement(enterE);
@@ -39,7 +39,7 @@ public class LoginTest extends ShareData {
         WebElement messageerrorE = driver.findElement(By.id("errormsg"));
         elementMethods.validateElement(messageerrorE, "Invalid User Name or PassWord");
 
-        driver.close();
+        //driver.close();
 
         //Setam dirver-ul de Chrome
         //Deschidem o instanta de chrome
