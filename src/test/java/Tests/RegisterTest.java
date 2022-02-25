@@ -1,7 +1,10 @@
 package Tests;
 
+import Base.Hooks;
 import Base.ShareData;
 import Help.ElementMethods;
+import Pages.IndexPage;
+import Pages.RegisterPage;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -12,17 +15,26 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
-public class RegisterTest extends ShareData {
-    //Mostenire
+public class RegisterTest extends Hooks {
 
-    public ElementMethods elementMethods;
-
+    public IndexPage indexPage;
+    public RegisterPage registerPage;
 
     @Test
+    public void register(){
 
-    //Trebuie sa recuperezi !!!
+        indexPage = new IndexPage(getDriver());
+        registerPage = new RegisterPage(getDriver());
 
-    public void register() {
+        indexPage.clickSkipSignIn();
+
+        registerPage.registerValidProcess(inputData);
+    }
+}
+
+
+
+    /*public void register() {
 
         elementMethods = new ElementMethods(driver);
 
@@ -42,7 +54,7 @@ public class RegisterTest extends ShareData {
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,600)");
-        WebElement languagesElement = driver.findElement(By.cssSelector("div[id='mssd']"));
+        WebElement languagesElement = driver.findElement(By.cssSelector("div[id='msdd']"));
         elementMethods.clickElement(languagesElement);
         List<WebElement> LanguageOptions = driver.findElements(By.cssSelector(".ui-autocomplete.ui-front>li>a"));
         for (int index = 0; index < LanguageOptions.size(); index++) {
@@ -60,4 +72,6 @@ public class RegisterTest extends ShareData {
         elementMethods.clickElement(yearElement);
 
     }
-}
+}*/
+
+

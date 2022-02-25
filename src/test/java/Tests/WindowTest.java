@@ -1,8 +1,12 @@
 package Tests;
 
+import Base.Hooks;
 import Base.ShareData;
 import Help.ElementMethods;
 import Help.WindowMethods;
+import Pages.IndexPage;
+import Pages.RegisterPage;
+import Pages.WindowPage;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -10,9 +14,32 @@ import org.openqa.selenium.interactions.Actions;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WindowTest extends ShareData {
+public class WindowTest extends Hooks {
 
-    public ElementMethods elementMethods;
+    public IndexPage indexPage;
+    public RegisterPage registerPage;
+    public WindowPage windowPage;
+
+    @Test
+    public void windowTest(){
+
+        indexPage = new IndexPage(getDriver());
+        registerPage = new RegisterPage(getDriver());
+        windowPage = new WindowPage(getDriver());
+
+        indexPage.clickSkipSignIn();
+
+        registerPage.goToWindowPage();
+
+        windowPage.newTabProcess();
+        windowPage.newWindowProcess();
+        windowPage.multipleTabsProcess();
+
+    }
+
+}
+
+    /*public ElementMethods elementMethods;
     public WindowMethods windowMethods;
 
 
@@ -21,6 +48,8 @@ public class WindowTest extends ShareData {
 
         elementMethods=new ElementMethods(driver);
         windowMethods=new WindowMethods(driver);
+
+        //De aici iei pt register!!!
 
         WebElement skipSignInElement = driver.findElement(By.id("btn2"));
         elementMethods.clickElement(skipSignInElement);
@@ -71,3 +100,25 @@ public class WindowTest extends ShareData {
         windowMethods.switchToTab(0);
     }
 }
+
+//public class WindowTest extends SharedData {
+//
+//    public IndexPage indexPage;
+//    public RegisterPage registerPage;
+//    public WindowPage windowPage;
+//
+//    @Test
+//    public void windowTest(){
+//
+//        indexPage = new IndexPage(driver);
+//        registerPage = new RegisterPage(driver);
+//        windowPage = new WindowPage(driver);
+//
+//        indexPage.clickSkipSignIn();
+//
+//        registerPage.goToWindowPage();
+//
+//        windowPage.newTabProcess();
+//        windowPage.newWindowProcess();
+//        windowPage.multipleTabsProcess();*/
+

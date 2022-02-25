@@ -1,9 +1,13 @@
 package Tests;
 
+import Base.Hooks;
 import Base.ShareData;
 import Help.AlertsMethods;
 import Help.ElementMethods;
 import Help.PageMethods;
+import Pages.AlertPage;
+import Pages.IndexPage;
+import Pages.RegisterPage;
 import org.junit.Test;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -17,9 +21,31 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 
-public class AlertTest extends ShareData {
+public class AlertTest extends Hooks {
 
-    //Refactorizare - de la naspa la frumos
+    public IndexPage indexPage;
+    public RegisterPage registerPage;
+    public AlertPage alertPage;
+
+    @Test
+    public void TestAutomat(){
+
+        indexPage = new IndexPage(getDriver());
+        registerPage = new RegisterPage(getDriver());
+        alertPage = new AlertPage(getDriver());
+
+        indexPage.clickSkipSignIn();
+
+        registerPage.goToAlertPage();
+
+        alertPage.alertOkProcess();
+        alertPage.alertOkCancelProcess();
+        alertPage.alertTextProcess(inputData);
+    }
+}
+
+
+    /*Refactorizare - de la naspa la frumos
 
     //Chemi metoda
 
@@ -30,8 +56,10 @@ public class AlertTest extends ShareData {
     @Test
 
     public void testAutomat(){
+    }
+}
 
-        //Initializezi
+        Initializezi
 
         elementMethods = new ElementMethods(driver);
         pageMethods = new PageMethods(driver);
@@ -84,4 +112,6 @@ public class AlertTest extends ShareData {
         alertsMethods.acceptFillAlert("Test");
 
     }
-}
+}*/
+
+

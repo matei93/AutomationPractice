@@ -2,6 +2,8 @@ package Tests;
 
 import Base.ShareData;
 import Help.ElementMethods;
+import Pages.IndexPage;
+import Pages.LoginPage;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -12,15 +14,25 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class LoginTest extends ShareData {
 
-    public ElementMethods elementMethods;
+    public IndexPage indexPage;
+    public LoginPage loginPage;
 
     // Declaram variabila WebDriver
 
     @Test
 
-    public void Login(){
+    public void login(){
 
-        elementMethods=new ElementMethods(driver);
+        indexPage = new IndexPage(driver);
+        loginPage = new LoginPage(driver);
+
+        indexPage.clickSignIn();
+        loginPage.loginInvalidProcess("matei.florin@outlook.com","Frankie93","Invalid User Name or PassWord");
+
+
+    }
+
+        /*elementMethods=new ElementMethods(driver);
 
         WebElement signInE = driver.findElement(By.id("btn1"));
         elementMethods.clickElement(signInE);
@@ -37,7 +49,7 @@ public class LoginTest extends ShareData {
         elementMethods.clickElement(enterE);
 
         WebElement messageerrorE = driver.findElement(By.id("errormsg"));
-        elementMethods.validateElement(messageerrorE, "Invalid User Name or PassWord");
+        elementMethods.validateElement(messageerrorE, "Invalid User Name or PassWord");*/
 
         //driver.close();
 
@@ -48,8 +60,8 @@ public class LoginTest extends ShareData {
         //Quit=inchide instanta cu toate taburile deschise
         //Close=inchide tabul curent
         //Select=este un dropdown
-        //De sugerat de a pune un mesaj cand faci un assert.
+        //De sugerat de a pune un mesaj cand faci un assert.*/
 
 
-    }
+
 }
